@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест Socket.IO</title>
+</head>
+<body>
+    <h2>Чат через Socket.IO</h2>
+    <div id="messages" style="border:1px solid #ccc; min-height:200px; margin-bottom:10px; padding:10px;"></div>
+    <input type="text" id="msgInput" placeholder="Введите сообщение...">
+    <button onclick="sendMessage()">Отправить</button>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:3001');
+
+        socket.on('message', (data) => {
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>${data}</p>`;
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('msgInput');
+            const text = input.value.trim();
+            if (text) {
+                socket.emit('message', text);
+                input.value = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import http from 'http';
+import { Server } from 'socket.io';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -9,6 +11,27 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = 3001;
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+});
+
+io.on('connection', (socket) => {
+  console.log('Клиент подключился:', socket.id)
+
+  socket.on('message', (data) => {
+    console.log('Получено сообщение:', data)
+    socket.broadcast.emit('message', data)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('Клиент отключился', socket.id)
+  })
+})
 
 app.get('/', (req, res) => {
   res.send('Доска работает!')
@@ -47,6 +70,6 @@ app.get('/boards/:id', async (req,res) => {
   }
 })
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
 })
