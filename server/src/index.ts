@@ -23,9 +23,18 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log('Клиент подключился:', socket.id)
 
-  socket.on('message', (data) => {
+  let currentBoardId: string | null = null
+
+  socket.on('join-board', (boardId: string) =>{
+    currentBoardId = boardId
+    socket.join(boardId)
+  })
+
+  socket.on('message', (data: string) =>{
     console.log('Получено сообщение:', data)
-    socket.broadcast.emit('message', data)
+    if (currentBoardId){
+      socket.to(currentBoardId).emit('message', data)
+    }
   })
 
   socket.on('disconnect', () => {
