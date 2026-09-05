@@ -42,10 +42,6 @@ io.on('connection', (socket) => {
   })
 })
 
-app.get('/', (req, res) => {
-  res.send('Доска работает!')
-})
-
 app.post('/boards', async (req, res) => {
 const { title, data } = req.body
 if (!title){
