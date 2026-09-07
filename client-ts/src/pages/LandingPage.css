@@ -197,7 +197,7 @@ a:hover {
   }
 }
 
-@media (max-width: 824px) {
+@media (max-width: 724px) {
   .nav {
     display: none;
   }
@@ -205,7 +205,7 @@ a:hover {
 
 @media (max-width: 1024px) {
   .nav {
-    gap: 24px;
+    gap: 30px;
   }
 }
 
@@ -313,4 +313,236 @@ a:hover {
   .hero {
     padding: 60px 0 80px;
   }
+}
+
+/* ------ Возможности ------ */
+
+.section {
+  padding: 80px 0;
+}
+
+.section--alt {
+  background: #fff;
+}
+
+.section__title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 48px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.feature-card__icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.feature-card__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-card__text {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+/* ------ Тарифы ------ */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.pricing-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.pricing-card--popular {
+  border: 2px solid var(--primary);
+  transform: scale(1.03);
+}
+
+.pricing-card--popular:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+.pricing-card--soon {
+  opacity: 0.7;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.popular-badge--soon {
+  background: var(--text-secondary);
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 16px 0;
+  color: var(--primary);
+}
+
+.pricing-card ul {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.pricing-card li {
+  padding: 8px 0;
+  color: var(--text-secondary);
+}
+
+.pricing-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: var(--primary);
+  font-weight: 500;
+  margin-top: -32px;
+  margin-bottom: 40px;
+}
+
+/* Переключатель периодов */
+.pricing-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.pricing-period-btn {
+  background: #fff;
+  border: 2px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 24px;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pricing-period-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* ------ отзывы ------ */
+
+.reviews-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.reviews-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.review-card {
+  min-width: 300px;
+  background: #fff;
+  padding: 40px 24px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.review-card__stars {
+  color: #F59E0B;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.review-card p {
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.review-card__author-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.review-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.review-card__author-info {
+  text-align: left;
+  line-height: 1.4;
+}
+
+.review-card__author {
+  font-weight: 600;
+  margin: 0;
 }
