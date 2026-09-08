@@ -546,3 +546,83 @@ a:hover {
   font-weight: 600;
   margin: 0;
 }
+
+/* ------ faq ------ */
+
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.faq-question:hover {
+  color: var(--primary);
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+
+.faq-answer {
+  padding-bottom: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ------ CTA секция ------ */
+
+.cta {
+  background: var(--primary-light);
+  text-align: center;
+  padding: 60px 0;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.cta p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* ------ футер ------ */
+
+.footer {
+  background: #111827;
+  color: #9CA3AF;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer__link {
+  color: #D1D5DB;
+}
+
+.footer__link:hover {
+  color: #fff;
+}

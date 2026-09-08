@@ -2,14 +2,56 @@ import { useState } from "react";
 import './LandingPage.css'
 
 function App(){
+
+  const[faqItems, setFaqItems] = useState([
+  {
+    question: "Как работает интерактивная доска?",
+    answer: "Вы можете рисовать прямо в браузере, добавлять готовые фигуры (круги, квадраты, стрелки) и сохранять результат. Всё происходит в реальном времени, без задержек.",
+    show: false
+  },
+  {
+    question: "Можно ли экспортировать нарисованное?",
+    answer: "Да, экспорт доступен в PDF и PNG. Вы можете отправить файл ученику или распечатать для офлайн-занятий.",
+    show: false
+  },
+  {
+    question: "Есть ли готовые шаблоны фигур?",
+    answer: "Конечно! В библиотеке более 20 базовых фигур: линии, прямоугольники, эллипсы, треугольники, стрелки и даже сетки для графиков.",
+    show: false
+  },
+  {
+    question: "Сколько это стоит?",
+    answer: "Полный доступ ко всем функциям - до 149 ₽ в месяц, без скрытых платежей. Если у вас есть подписка на платформу teachforum, то доска идёт в подарок",
+    show: false
+  },
+  {
+    question: "Подходит ли доска для групповых занятий?",
+    answer: "Да, вы можете пригласить несколько учеников одновременно. Все видят изменения в реальном времени, а вы управляете доступом.",
+    show: false
+  },
+  {
+    question: "Нужно ли устанавливать программу?",
+    answer: "Нет, всё работает прямо в браузере. Достаточно открыть ссылку и начать занятие - без загрузки и установки.",
+    show: false
+  }
+])
+
+function showFaq (index: number) {
+  setFaqItems(prev =>
+    prev.map((item, i) =>
+      i == index ? {...item, show: !item.show} : item
+    )
+  )
+}
+
   return(
     <div className="body">
           <header className="header">
         <div className="container header__inner">
             <a href="#" className="logo">
                 <svg className="logo__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 14l9-5-9-5-9 5 9 5z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 14l9-5-9-5-9 5 9 5z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
                 TeachForum / Board
             </a>
@@ -118,7 +160,6 @@ function App(){
     <h2 className="section__title">Отзывы</h2>
     <div className="reviews-carousel" id="reviewsCarousel">
       <div className="reviews-track" id="reviewsTrack">
-        {/* 15 отзывов об интерактивной доске */}
         <div className="review-card">
           <div className="review-card__stars">★★★★★</div>
           <p>"Интерактивная доска просто супер! Рисую графики и схемы прямо во время занятия, ученики в восторге."</p>
@@ -157,7 +198,35 @@ function App(){
     </div>
   </div>
 </section>
+
+<section id="faq" className="section">
+            <div className="container">
+                <h2 className="section__title">Часто спрашивают</h2>
+                {faqItems.map((faq, index) => (
+                  <div key={index} className="faq-list">
+                    <div className="faq-item">
+                      <button className="faq-question" onClick={() => showFaq(index)}>{faq.question}</button>
+                      {faq.show && <div className="faq-answer">{faq.answer}</div>}
+                    </div>
+                  </div>
+                ))}
+            </div>
+        </section>
+
+                <section className="cta section">
+            <div className="container" style={{textAlign: 'center'}}>
+                <h2>Готовы начать?</h2>
+                <p style={{marginBottom: '24px'}}>Присоединяйтесь к преподавателям, которые уже управляют своими занятиями через TeachForum.</p>
+                <button className="btn btn--primary btn--lg" id="ctaLoginBtn">Войти в систему</button>
+            </div>
+        </section>
     </main>
+
+    <footer className="footer">
+        <div className="container">
+            <p className="footer__text">© 2026 TeachForum · <a href="contact.html" className="footer__link">teachforum@mail.ru</a> · <a href="privacy.php" className="footer__link">Политика конфиденциальности</a></p>
+        </div>
+    </footer>
     </div>
   )
 }
