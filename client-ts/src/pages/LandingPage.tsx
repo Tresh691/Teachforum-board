@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from 'framer-motion';
 import './LandingPage.css'
 
-function App(){
+function LandingPage(){
 
   const[faqItems, setFaqItems] = useState([
   {
@@ -47,20 +47,12 @@ function showFaq (index: number) {
 
 const [toggleModal, setToggleModal] = useState(false)
 function showModal(){
-if(toggleModal === false){
-  setToggleModal(true)
-} else if(toggleModal === true){
-  setToggleModal(false)
-}
+  setToggleModal(!toggleModal)
 }
 
 const [type, setType] = useState<string>('password')
-function toggleVisibilityPasword (){
-  if(type === 'password'){
-    setType('text')
-  } else if(type === 'text'){
-    setType('password')
-  }
+function toggleVisibilityPassword (){
+  setType(type === 'text' ? 'password' : 'text')
 }
 
   return(
@@ -266,7 +258,7 @@ function toggleVisibilityPasword (){
                 {faqItems.map((faq, index) => (
                   <div key={index} className="faq-list">
                     <div className="faq-item">
-                      <button className="faq-question" onClick={() => showFaq(index)}>{faq.question}</button>
+                      <button className="faq-question" onClick={() => showFaq(index)} aria-expanded={faq.show}>{faq.question}</button>
                       {faq.show && <div className="faq-answer">{faq.answer}</div>}
                     </div>
                   </div>
@@ -293,7 +285,7 @@ function toggleVisibilityPasword (){
     <button className="modal__close" onClick={() => showModal()}>&times;</button>
     <h2 className="modal__title">Вход в TeachForum</h2>
     <div style={{ color: 'red', display: 'none', marginBottom: '12px' }}></div>
-    <form className="login-form" action="login.php" method="POST">
+    <form className="login-form" action="" method="POST">
       <input type="hidden" name="role" value="teacher" />
       <div className="form-group">
         <label htmlFor="username" className="form-label">Логин или Email</label>
@@ -303,7 +295,7 @@ function toggleVisibilityPasword (){
         <label htmlFor="password" className="form-label">Пароль</label>
         <div className="password-wrapper">
           <input type={type} name="password" className="form-input" placeholder="Введите пароль" required />
-          <button type="button" className="password-toggle" aria-label="Показать пароль" onClick={toggleVisibilityPasword}>{type === 'password' ? '👁️' : '🙈'}</button>
+          <button type="button" className="password-toggle" aria-label="Показать пароль" onClick={toggleVisibilityPassword}>{type === 'password' ? '👁️' : '🙈'}</button>
         </div>
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
@@ -328,4 +320,4 @@ function toggleVisibilityPasword (){
   )
 }
 
-export default App
+export default LandingPage

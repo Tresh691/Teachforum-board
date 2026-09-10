@@ -1,7 +1,9 @@
-interface Board {
+export interface Board {
   id: string;
-  name: string;
-  elements: BoardElement[];
+  title: string;
+  data: any;
+  createdAt: string;
+  updatedAt: string
 }
 
 type BoardElement = SquareElement | TriangleElement | CircleElement | TextElement | LineElement | DiamondElement | ArrowElement | ImageElement

@@ -1,11 +1,13 @@
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import LandingPage from './pages/LandingPage'
+import BoardPage from './pages/BoardPage';
 
 function App(){
   return(
     <BrowserRouter>
     <Routes>
     <Route path='/' element={<LandingPage/>} />
+    <Route path='/board/:id' element={<BoardPage/>} />
     </Routes>
     </BrowserRouter>
   )
@@ -17,7 +19,6 @@ function App(){
 // import "@excalidraw/excalidraw/index.css";
 // import './App.css'
 // import { languages } from "@excalidraw/excalidraw";
-// console.log(languages);
 
 // function App() {
 //   const [count, setCount] = useState<number>(0)
