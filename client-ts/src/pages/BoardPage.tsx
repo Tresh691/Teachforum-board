@@ -16,12 +16,16 @@ function BoardPage(){
     .catch(err => console.error(err));
   }, [])
 
-if(!board) return(<div>Загрузка</div>)
+  if(!board) return(<div>Загрузка</div>)
+
+  function handleChange(elements: any, appState: any, files: any){
+    console.log(elements.length)
+  }
 
 return(
   <div>Доска {board?.title}
     <div style={{width: '100%', height:'600px'}}>
-      <Excalidraw langCode="ru-RU" initialData={{elements: board?.data?.element || []}}/>
+      <Excalidraw langCode="ru-RU"  onChange={handleChange} initialData={{elements: board?.data?.element || []}}/>
     </div>
   </div>
 )

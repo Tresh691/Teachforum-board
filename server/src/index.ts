@@ -75,6 +75,21 @@ app.get('/boards/:id', async (req,res) => {
   }
 })
 
+app.patch('/boards/:id', async (req,res) => {
+  const id = req.params.id
+  const { data } = req.body
+  try{
+    const updateBoard = await prisma.board.update({where: { id }, data: { data } })
+    res.status(200).json(updateBoard)
+  } catch(error: any){
+    if(error.code == 'P2025'){
+      return res.status(404).json({message: 'Страница не найдена'})
+    }
+    console.error(error)
+    res.status(500).json({message: 'Ошибка при обновлении, или доска не найдена'})
+  }
+})
+
 server.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
 })
