@@ -90,6 +90,16 @@ app.patch('/boards/:id', async (req,res) => {
   }
 })
 
+app.get('/boards', async (req,res) =>{
+  try{
+    const allBoards = await prisma.board.findMany({ orderBy: {updatedAt: 'desc'} })
+    res.status(200).json(allBoards)
+  } catch(error){
+    console.error(error)
+    res.status(500).json({message: 'Ошибка при нахожнении досок'})
+  }
+})
+
 server.listen(PORT, () => {
   console.log(`Сервер запущен на http://localhost:${PORT}`);
 })
