@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import LandingPage from './pages/LandingPage'
-import BoardPage from './pages/BoardPage';
+import BoardPage from './pages/BoardPage'
+import CabinetPage from './pages/CabinetPage'
 
 function App(){
   return(
@@ -8,6 +9,7 @@ function App(){
     <Routes>
     <Route path='/' element={<LandingPage/>} />
     <Route path='/board/:id' element={<BoardPage/>} />
+    <Route path='/my-boards' element={<CabinetPage/>} />
     </Routes>
     </BrowserRouter>
   )
