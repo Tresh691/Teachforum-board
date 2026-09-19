@@ -10,7 +10,9 @@ interface Board {
 }
 
 function CabinetPage(){
-  const hellomsg = ['Привет! Доска уже здесь и ждет тебя.','Здравствуйте! Пора включить воображение.','О, снова ты! Давай начнем.','С возвращением! Твой кабинет открыт.','Приветствую! Доска сегодня добрая, пользуйся моментом.','Здравствуй! Сегодня доска особенно послушная.','Привет! Готовы стереть границы невозможного?','Здравствуй! Доска в ударе, даже ластик не спорит.','Снова вместе! Давай сделаем урок интересным.','Здравствуйте! Начнем с чистого листа.']
+  const helloMessage = ['Привет! Доска уже здесь и ждет тебя.','Здравствуйте! Пора включить воображение.','О, снова ты! Давай начнем.','С возвращением! Твой кабинет открыт.','Приветствую! Доска сегодня добрая, пользуйся моментом.','Здравствуй! Сегодня доска особенно послушная.','Привет! Готовы стереть границы невозможного?','Здравствуй! Доска в ударе, даже ластик не спорит.','Снова вместе! Давай сделаем урок интересным.','Здравствуйте! Начнем с чистого листа.']
+  const randonIndex = Math.floor(Math.random() * helloMessage.length)
+  const randomMessage = helloMessage[randonIndex]
   const [boards, setBoards] = useState<Board[]>([])
 
   useEffect(() =>{
@@ -36,11 +38,19 @@ function CabinetPage(){
     </header>
 
     <main className="main">
-      <div>{hellomessage}</div>
-      <div className="pricing-grid">
-        <div className="pricing-card">
+      <div className="hello-message">
+        <div className="message-content">{randomMessage}</div>
+      </div>
 
-        </div>
+      <div className="board-grid">
+        {boards.map((board, index) => (
+          <div className="board-card" key={index}>
+            <div className="board-image"></div>
+            <h2 className="board-title">{board.title}</h2>
+            <button className="btn-icon">✏️</button>
+            <button className="btn-icon">🗑️</button>
+          </div>
+        ))}
       </div>
     </main>
     </div>
